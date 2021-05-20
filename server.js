@@ -2,14 +2,16 @@ const express = require('express')
 const mongoose = require('mongoose')
 const Song = require('./models/song.js')
 const app = express();
-const port = 5000;
+require('dotenv').config();
+app.set('view engine', 'ejs')
+app.use(express.json())
+const port = process.env.PORT || 5000;
 
 mongoose.connect('mongodb://localhost/songRecorder', {
   useNewUrlParser: true, useUnifiedTopology: true
 })
 
-app.set('view engine', 'ejs')
-app.use(express.json())
+
 app.use(express.static('public'))
 
 app.get('/', (req, res) => {
