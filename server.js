@@ -1,7 +1,8 @@
 const express = require('express')
 const mongoose = require('mongoose')
 const Song = require('./models/song.js')
-const app = express()
+const app = express();
+const port = 5000;
 
 mongoose.connect('mongodb://localhost/songRecorder', {
   useNewUrlParser: true, useUnifiedTopology: true
@@ -35,4 +36,4 @@ app.get('/songs/:id', async (req, res) => {
   res.render('index', { song: song })
 })
 
-app.listen(5000)
+app.listen(port)
